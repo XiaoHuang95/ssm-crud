@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--settings：控制mybatis的全局行为-->
+<!--
+    <settings>
+        &lt;!&ndash;设置mybatis输出日志&ndash;&gt;
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+-->
+    <!--设置别名-->
+    <typeAliases>
+        <package name="com.blank.domain"/>
+    </typeAliases>
+    <!--在环境前面配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+    <!--sql mapper(sql映射文件)的位置-->
+    <mappers>
+        <!--
+        name:是包名，这个包中的所有mapper.xml一次性都能加载
+        使用package的要求：
+           1. mapper文件名称和dao接口名必须完全一样，包括大小写
+           2. mapper文件和dao接口必须在同一目录
+        -->
+        <package name="com.blank.dao"/>
+    </mappers>
+</configuration>
